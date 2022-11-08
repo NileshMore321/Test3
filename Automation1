@@ -1,0 +1,65 @@
+//Without DDF
+	
+	public static void main(String[] args) throws InterruptedException
+	{
+		
+		 System.setProperty("webdriver.chrome.driver", "D:\\11_June\\106\\chromedriver_win32 (1)\\chromedriver.exe");
+			
+			WebDriver driver=new ChromeDriver();
+			
+			Thread.sleep(2000);
+			
+		    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		    
+		    driver.manage().window().maximize();
+			 
+		   //wait Syncronized
+		    
+		  driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		
+		  //Enter Username
+		
+		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("Admin");
+		
+		Thread.sleep(2000);
+		
+		  //Enter Password
+		
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
+		
+		Thread.sleep(2000);
+		
+		//Click on log in button
+		
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		
+		//Test case-I:Verify Username
+		
+		
+		String ExpectedUsername="Paul Collings";
+		
+	    WebElement	Address=driver.findElement(By.xpath("//span[@class='oxd-userdropdown-tab']"));
+		   
+	            String    ActualUsername=Address.getText();		
+		
+		if(ExpectedUsername.equals(ActualUsername))
+		{
+			System.out.println("Pass");
+			
+		}
+		else
+		{
+			
+			System.out.println("Fail");
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
